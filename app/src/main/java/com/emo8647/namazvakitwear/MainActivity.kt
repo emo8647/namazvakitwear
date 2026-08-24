@@ -19,6 +19,12 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
+// Eksik import'lar buraya eklendi bro:
+import com.emo8647.namazvakitwear.data.AppDatabase
+import com.emo8647.namazvakitwear.data.PrayerEntity
+import com.emo8647.namazvakitwear.network.RetrofitClient
+import com.emo8647.namazvakitwear.utils.LocationHelper
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
