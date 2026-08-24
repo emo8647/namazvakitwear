@@ -34,14 +34,19 @@ android {
 }
 
 dependencies {
-    // Wear OS Compose Material3 (Slider, InlineSlider ve Material You bileşenleri)
+    // Wear OS Compose Material3
     implementation("androidx.wear.compose:compose-material3:1.0.0-alpha18")
     implementation("androidx.wear.compose:compose-foundation:1.3.0")
     implementation("androidx.wear.compose:compose-navigation:1.3.0")
 
-    // Wear OS Tile & Protolayout (Widget desteği)
+    // Wear OS Tile & Protolayout
     implementation("androidx.wear.tiles:tiles:1.3.0")
     implementation("androidx.wear.protolayout:protolayout:1.1.0")
+    implementation("androidx.wear.protolayout:protolayout-material:1.1.0")
+
+    // Concurrent / Guava Desteği (TileService Future dönüşleri için)
+    implementation("androidx.concurrent:concurrent-futures:1.1.0")
+    implementation("com.google.guava:guava:31.1-android")
 
     // API & Network
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
