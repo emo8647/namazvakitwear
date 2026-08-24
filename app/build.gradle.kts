@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt") // Düzeltildi bro
+    kotlin("kapt")
 }
 
 android {
@@ -34,10 +34,9 @@ android {
 }
 
 dependencies {
-    // AndroidX & Core Compose (Eksikler eklendi bro)
+    // AndroidX & Core Compose
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.activity:activity-compose:1.8.2")
-    implementation("androidx.compose.ui:ui:1.6.2")
     implementation("androidx.compose.ui:ui:1.6.2")
 
     // Wear OS Compose Material3
@@ -50,9 +49,10 @@ dependencies {
     implementation("androidx.wear.protolayout:protolayout:1.1.0")
     implementation("androidx.wear.protolayout:protolayout-material:1.1.0")
 
-    // Concurrent / Guava Desteği (TileService Future dönüşleri için)
+    // Concurrent & Guava / Coroutine Desteği (Eklenen Kısım Bro)
     implementation("androidx.concurrent:concurrent-futures:1.1.0")
     implementation("com.google.guava:guava:31.1-android")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.7.3")
 
     // API & Network
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
