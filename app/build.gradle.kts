@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    kotlin("kapt") // Düzeltildi bro
 }
 
 android {
@@ -34,6 +34,12 @@ android {
 }
 
 dependencies {
+    // AndroidX & Core Compose (Eksikler eklendi bro)
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.activity:activity-compose:1.8.2")
+    implementation("androidx.compose.ui:ui:1.6.2")
+    implementation("androidx.compose.ui:ui:1.6.2")
+
     // Wear OS Compose Material3
     implementation("androidx.wear.compose:compose-material3:1.0.0-alpha18")
     implementation("androidx.wear.compose:compose-foundation:1.3.0")
