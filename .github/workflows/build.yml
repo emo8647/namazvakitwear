@@ -25,8 +25,11 @@ jobs:
     - name: Generate Gradle Wrapper
       run: gradle wrapper --gradle-version 8.6
 
+    - name: Make gradlew executable
+      run: chmod +x gradlew
+
     - name: Build Debug APK
-      run: ./gradlew assembleDebug -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true -Dorg.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=1024m"
+      run: ./gradlew assembleDebug -Pandroid.useAndroidX=true -Dorg.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=1024m"
       
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
