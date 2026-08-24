@@ -11,6 +11,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.room.Room
+import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
+import androidx.wear.compose.foundation.lazy.items
 import androidx.wear.compose.material3.*
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -35,7 +38,7 @@ class MainActivity : ComponentActivity() {
 fun NamazVakitApp(context: Context) {
     var cityName by remember { mutableStateOf("Taranıyor...") }
     var timings by remember { mutableStateOf<PrayerEntity?>(null) }
-    var fontSizeMultiplier by remember { mutableFloatStateOf(1.0f) } // Wear OS Slider ile yazı boyutu ayarı
+    var fontSizeMultiplier by remember { mutableFloatStateOf(1.0f) }
     val scope = rememberCoroutineScope()
     val todayDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
 
@@ -77,17 +80,18 @@ fun NamazVakitApp(context: Context) {
     Scaffold {
         ScalingLazyColumn(
             modifier = Modifier.fillMaxSize(),
-                          horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
                 Text(
                     text = cityName,
-                     style = MaterialTheme.typography.titleMedium,
-                     modifier = Modifier.padding(top = 12.dp, bottom = 4.dp)
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.padding(top = 12.dp, bottom = 4.dp)
                 )
             }
 
-            timings?.let { data ->
+            val data = timings
+            if (data != null) {
                 val list = listOf(
                     "İmsak" to data.fajr,
                     "Güneş" to data.sunrise,
@@ -96,26 +100,30 @@ fun NamazVakitApp(context: Context) {
                     "Akşam" to data.maghrib,
                     "Yatsı" to data.isha
                 )
-                items(list.size) { i ->
-                    val (title, time) = list[i]
+                items(list) { item ->
                     Card(
                         onClick = {},
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 2.dp)
                     ) {
                         Row(
-                            modifier = Modifier.fillMaxWidth().padding(8.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(8.dp),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Text(text = title, style = MaterialTheme.typography.bodyMedium)
-                            Text(text = time, style = MaterialTheme.typography.labelMedium)
+                            Text(text = item.first, style = MaterialTheme.typography.bodyMedium)
+                            Text(text = item.second, style = MaterialTheme.typography.labelMedium)
                         }
                     }
                 }
-            } ?: item {
-                CircularProgressIndicator()
+            } else {
+                item {
+                    CircularProgressIndicator()
+                }
             }
 
-            // Wear OS Dokunmatik Slider (Yazı boyutu hassasiyeti)
             item {
                 Spacer(modifier = Modifier.height(8.dp))
                 InlineSlider(
@@ -123,7 +131,11 @@ fun NamazVakitApp(context: Context) {
                     onValueChange = { fontSizeMultiplier = it },
                     valueRange = 0.8f..1.4f,
                     steps = 5,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)
+                    decreaseIcon = { Text("-") },
+                    increaseIcon = { Text("+") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp)
                 )
             }
         }
