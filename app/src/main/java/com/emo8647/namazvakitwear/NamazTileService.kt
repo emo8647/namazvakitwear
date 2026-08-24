@@ -10,6 +10,7 @@ import androidx.wear.protolayout.material.Typography
 import androidx.wear.tiles.RequestBuilders
 import androidx.wear.tiles.TileBuilders
 import androidx.wear.tiles.TileService
+import com.emo8647.namazvakitwear.network.RetrofitClient
 import com.google.common.util.concurrent.ListenableFuture
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,26 +30,26 @@ class NamazTileService : TileService() {
             val nextPrayerText = response?.data?.timings?.get("Fajr")?.let { "İmsak: $it" } ?: "Yükleniyor..."
 
             val layout = LayoutElementBuilders.Column.Builder()
-            .setWidth(DimensionBuilders.expand())
-            .setHeight(DimensionBuilders.expand())
-            .addContent(
-                Text.Builder(applicationContext, nextPrayerText)
-                .setTypography(Typography.TYPOGRAPHY_TITLE3)
-                .setColor(Colors.DEFAULT.primary)
+                .setWidth(DimensionBuilders.expand())
+                .setHeight(DimensionBuilders.expand())
+                .addContent(
+                    Text.Builder(applicationContext, nextPrayerText)
+                        .setTypography(Typography.TYPOGRAPHY_TITLE3)
+                        .setColor(Colors.DEFAULT.primary)
+                        .build()
+                )
                 .build()
-            )
-            .build()
 
             TileBuilders.Tile.Builder()
-            .setResourcesVersion("1")
-            .setTileTimeline(
-                TimelineBuilders.Timeline.Builder()
-                .addTimelineEntry(
-                    TimelineBuilders.TimelineEntry.Builder()
-                    .setLayout(LayoutElementBuilders.Layout.Builder().setRoot(layout).build())
-                    .build()
+                .setResourcesVersion("1")
+                .setTileTimeline(
+                    TimelineBuilders.Timeline.Builder()
+                        .addTimelineEntry(
+                            TimelineBuilders.TimelineEntry.Builder()
+                                .setLayout(LayoutElementBuilders.Layout.Builder().setRoot(layout).build())
+                                .build()
+                        ).build()
                 ).build()
-            ).build()
         }
     }
 
