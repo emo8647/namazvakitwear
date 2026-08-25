@@ -8,7 +8,7 @@ data class ApiResponse(val data: ApiData)
 data class ApiData(val timings: Map<String, String>)
 
 interface AladhanApi {
-    @GET("v1/timingsByCity?city=Bursa&country=Turkey&method=13")
+    @GET("v1/timingsByCity?city=Mustafakemalpaşa&country=Turkey&method=13")
     suspend fun getTimings(): ApiResponse
 }
 
@@ -21,5 +21,5 @@ object RetrofitClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(AladhanApi::class.java)
-    }
+        }
 }
