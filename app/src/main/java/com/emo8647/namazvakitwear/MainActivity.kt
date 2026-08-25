@@ -13,12 +13,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.wear.compose.material3.CircularProgressIndicator
-import androidx.wear.compose.material3.MaterialTheme
-import androidx.wear.compose.material3.Scaffold
-import androidx.wear.compose.material3.Text
+import androidx.wear.compose.material.CircularProgressIndicator
+import androidx.wear.compose.material.MaterialTheme
+import androidx.wear.compose.material.Scaffold
+import androidx.wear.compose.material.Text
 import com.emo8647.namazvakitwear.data.PrayerEntity
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
