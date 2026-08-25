@@ -17,10 +17,7 @@ import androidx.wear.compose.material3.CircularProgressIndicator
 import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.Scaffold
 import androidx.wear.compose.material3.Text
-import com.emo8647.namazvakitwear.data.AppDatabase
 import com.emo8647.namazvakitwear.data.PrayerEntity
-import com.emo8647.namazvakitwear.network.RetrofitClient
-import com.emo8647.namazvakitwear.utils.LocationHelper
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
