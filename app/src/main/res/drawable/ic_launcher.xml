@@ -1,0 +1,20 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="192dp"
+    android:height="192dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    
+    <!-- Arka Plan Yuvarlak Koyu Desen -->
+    <path
+        android:fillColor="#121212"
+        android:pathData="M12,0 C5.37,0 0,5.37 0,12 C0,18.63 5.37,24 12,24 C18.63,24 24,18.63 24,12 C24,5.37 18.63,0 12,0 Z" />
+
+    <!-- Hilal ve Cami Minare Vektörü (Yeşil/Altın Minimalist) -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M12,3 L12,5 M10,5 H14 M12,6 C9,6 7,8 7,11 V19 H17 V11 C17,8 15,6 12,6 Z M9,19 V14 C9,12.5 10.5,11 12,11 C13.5,11 15,12.5 15,14 V19 Z" />
+    
+    <path
+        android:fillColor="#FFD700"
+        android:pathData="M12,1.5 C12.8,1.5 13.5,2.2 13.5,3 C13.5,3.8 12.8,4.5 12,4.5 C11.2,4.5 10.5,3.8 10.5,3 C10.5,2.2 11.2,1.5 12,1.5 Z" />
+</vector>
